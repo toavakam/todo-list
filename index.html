@@ -7,19 +7,28 @@
     <link rel="stylesheet" href="todo-list.css">
 </head>
 <body>
-    <div class="container">
-        <div class="todo_list">
-             <h1>ToDoList</h1>
-            <div class="create_new_todo">
-                <input type="text" class="message" placeholder="Описание">
-                <button class="add">Добавить</button>
-            </div>
-            <div class="wrapper">
+    <h1 style="color:black">ToDoList</h1>
+        <div class="container">
+            <div class="todolist">
                 <ul class="todo"></ul>
             </div>
+            <div class="editor">
+                <div>
+                <input type="text" class="message" placeholder="Новое дело">
+                <button class="add">Добавить</button>
+                </div>
+                <input type="hidden" id="identify">
+                <input type="text" id="searchbyname" class="message" placeholder="Поиск">
+                <button class="searchbtn">Поиск</button>
+                <div>
+                <input type="text" id="edit" class="message" placeholder="Описание">
+                <button onclick="editToDo()">Редактировать</button>
+                </div>
+                <button class="delete" onclick="deleteToDo()">Удалить</button>
+                <button class="delete" onclick="todoStart()">Начать</button>
+                <button class="delete" style="margin-bottom: 0px" onclick="todoFinish()">Выполнено</button>
+            </div>
         </div>
-     </div>
      <script src="todo-list.js"></script>
-     <div></div>
 </body>    
 </html>

@@ -4,7 +4,7 @@ const addMessage = document.querySelector('.message');
 const addButton = document.querySelector('.add');
 const todo = document.querySelector('.todo');
 const searchbtn = document.querySelector('.searchbtn');
-const search = document.querySelector('#searchbyname')
+const search = document.querySelector('#searchbyname');
 
 //Задаем пустой объект todoList
 
@@ -29,9 +29,9 @@ function newToDoHandler() {
     };
     // Добавляем новый todo в todoList используя текущее время как идентификатор.
     todoList[Date.now()] = newTodo;
-    displayMessages(); // Обращаемся к функции displayMessages, которая визуально обновит список todo
     localStorage.setItem('todo', JSON.stringify(todoList)); //Обновляем todoList в LocaStorage
     addMessage.value = '' //Очищаем поле ввода для нового todo
+    displayMessages(); // Обращаемся к функции displayMessages, которая визуально обновит список todo
 }
 
 // Добавляем возможность добавления нового todo при нажатии клавиши Enter в поле ввода
@@ -55,8 +55,8 @@ function selectToDo(id) {
 function deleteToDo() {
     let id = document.querySelector('#identify').value; // Получаем айди выбранного todo из скрытого поля identify
     delete todoList[id]; // Удаляем todo из todoList по айди
-    displayMessages(); // Вызываем функцию displayMessages, которая выводит обновленный todoList
     localStorage.setItem('todo', JSON.stringify(todoList)); //Обновляем данные в localStorage
+    displayMessages(); // Обращаемся к функции displayMessages, которая визуально обновит список todo
 }
 
 //Задаем функцию editToDo, которая дает возможность обновить описание выбранного todo элемента
@@ -65,8 +65,8 @@ function editToDo() {
     let id = document.querySelector('#identify').value; // Получаем айди выбранного todo из скрытого поля identify
     let update = document.querySelector('#edit').value; // Получаем новое описание todo из скрытого поля edit
     todoList[id].todo = update; // Перезаписываем описание у выбранного todo
-    displayMessages(); // Вызываем функцию displayMessages, которая выводит обновленный todoList
     localStorage.setItem('todo', JSON.stringify(todoList)); //Обновляем данные в localStorage
+    displayMessages(); // Обращаемся к функции displayMessages, которая визуально обновит список todo
 }
 
 //Задаем функцию todoStart, которая меняет фон у выбранного todo элемента
@@ -74,8 +74,8 @@ function editToDo() {
 function todoStart() {
     let id = document.querySelector('#identify').value; // Получаем айди выбранного todo из скрытого поля identify
     todoList[id].bg = '#6495ED'; // Меняем цвет у выбранного todo 
-    displayMessages(); // Вызываем функцию displayMessages, которая выводит обновленный todoList
     localStorage.setItem('todo', JSON.stringify(todoList)); //Обновляем данные в localStorage
+    displayMessages(); // Обращаемся к функции displayMessages, которая визуально обновит список todo
 }
 
 //Задаем функцию todoStart, которая меняет фон у выбранного todo элемента
@@ -83,8 +83,8 @@ function todoStart() {
 function todoFinish() {
     let id = document.querySelector('#identify').value; // Получаем айди выбранного todo из скрытого поля identify
     todoList[id].bg = '#228B22'; // Меняем цвет у выбранного todo 
-    displayMessages(); // Вызываем функцию displayMessages, которая выводит обновленный todoList
     localStorage.setItem('todo', JSON.stringify(todoList)); //Обновляем данные в localStorage
+    displayMessages(); // Обращаемся к функции displayMessages, которая визуально обновит список todo
 }
 
 //Задаем функцию searchByName, которая дает возможность поиска todo по имени
@@ -115,11 +115,7 @@ function displayMessages() {
     Object.keys(todoList).forEach(id => {
         let item = todoList[id]; //Выбираем текущий todo по айди
         //Формируем добавленные todo как элемент списка. И добавляем возможность выбирать todo для дальнейшего редактирования. 
-        displayMessage += ` 
-    <li onclick=selectToDo(${id}) style=background-color:${item.bg}>
-  ${item.todo}
-    </li>
-    `;
+        displayMessage += `<li onclick=selectToDo(${id}) style=background-color:${item.bg}>${item.todo}</li>`;
     });
     todo.innerHTML = displayMessage; //Переносим данные из переменной в HTML странцу
     document.querySelector('#identify').value = ""; //Занлуяем значине в скрытом поле identify

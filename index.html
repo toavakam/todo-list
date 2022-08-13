@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo List</title>
     <link rel="stylesheet" href="todo-list.css">
 </head>
+
 <body>
     <h1 style="color:black">ToDoList</h1>
-        <div class="container">
-            <div class="todolist">
-                <ul class="todo"></ul>
-            </div>
-            <div class="editor">
-                <div>
+    <div class="container">
+        <div class="todolist">
+            <ul class="todo"></ul>
+        </div>
+        <div class="editor">
+            <div class="actionblock">
                 <input type="text" class="message" placeholder="Новое дело">
                 <button class="add">Добавить</button>
-                </div>
+            </div>
+            <div class="actionblock">
                 <input type="hidden" id="identify">
                 <input type="text" id="searchbyname" class="message" placeholder="Поиск">
                 <button class="searchbtn">Поиск</button>
-                <div>
+            </div>
+            <div class="actionblock">
                 <input type="text" id="edit" class="message" placeholder="Описание">
-                <button onclick="editToDo()">Редактировать</button>
-                </div>
-                <button class="delete" onclick="deleteToDo()">Удалить</button>
-                <button class="delete" onclick="todoStart()">Начать</button>
-                <button class="delete" style="margin-bottom: 0px" onclick="todoFinish()">Выполнено</button>
+                <button class="actionbutton" onclick="editToDo()">Редактировать</button>
+            </div>
+            <div class="editbuttons">
+                <button class="delete editbutton" style="background-color: red"
+                    onclick="deleteToDo()">Удалить</button>
+                <button class="delete editbutton" style="background-color: #6495ED"
+                    onclick="todoStart()">Начать</button>
+                <button class="delete editbutton" style="background-color: #228B22"
+                    onclick="todoFinish()">Выполнено</button>
             </div>
         </div>
-     <script src="todo-list.js"></script>
-</body>    
+    </div>
+    <script src="todo-list.js"></script>
+</body>
+
 </html>
